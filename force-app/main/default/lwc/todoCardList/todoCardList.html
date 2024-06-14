@@ -1,0 +1,24 @@
+<template>
+    <div class="container-card">
+        <div class="slds-var-m-around_medium slds-float_right refresh"><lightning-button-icon onclick={refreshData}
+                icon-name="utility:refresh" title="Refresh Table" size="large"
+                variant="border-filled"></lightning-button-icon>
+        </div>
+        <div class="slds-text-color_inverse slds-text-heading_small slds-align_absolute-center">
+            <lightning-icon icon-name="utility:task" alternative-text="Connected" size="small" title="large size"
+                variant="inverse" class="slds-var-m-around_medium"></lightning-icon>
+            To-Do's ({getTodoCounts})
+        </div>
+        <div class="slds-var-p-around_large">
+            <template if:true={todoRecordsAvailable}>
+                <div class="body slds-grid slds-wrap">
+                    <template for:each={todoRecords} for:item="todo">
+                        <div key={todo.Id} class="slds-col slds-size_1-of-3 slds-var-p-around_small">
+                            <c-todo-card todo={todo}></c-todo-card>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

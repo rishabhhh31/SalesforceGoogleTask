@@ -1,0 +1,33 @@
+<template>
+    <lightning-card variant="base">
+        <template if:true={todo}>
+            <div slot="title" class="slds-truncate my-custom-header slds-text-heading_small">{cardTitle}</div>
+            <div slot="actions">
+                <lightning-button-icon-stateful onclick={handleCompletion} selected={completedState} variant="border"
+                    size="small" icon-name="utility:check"
+                    alternative-text="To-Do Completed"></lightning-button-icon-stateful>
+            </div>
+            <div class="slds-var-p-horizontal_medium body">
+                <div class="slds-box slds-box_x-small slds-var-m-bottom_small slds-text-align_center due-date-box">
+                    <lightning-badge class="due-date-badge slds-text-align_center" label={dueDate}
+                        icon-name="utility:date_time">
+                    </lightning-badge>
+                </div>
+            </div>
+            <template if:true={description}>
+                <p class="slds-var-p-horizontal_medium my-custom-header"><b>Description: </b>{description}</p>
+            </template>
+            <template if:false={description}>
+                <div class="slds-var-p-horizontal_medium slds-text-color_destructive slds-text-align_center">
+                    <p>❗ No description was provided for this To-Do</p>
+                </div>
+            </template>
+            <div slot="footer" class="footer">
+                <lightning-badge class="slds-var-m-around_xx-small" label={priorityBadgeLabel}
+                    style={priorityBadgeColor}></lightning-badge>
+                <lightning-badge icon-name={iconName} class="slds-var-m-around_xx-small type-badge"
+                    label={typeBadgeLabel}></lightning-badge>
+            </div>
+        </template>
+    </lightning-card>
+</template>

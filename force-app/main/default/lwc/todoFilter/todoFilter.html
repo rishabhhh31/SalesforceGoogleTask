@@ -1,0 +1,19 @@
+<template>
+    <lightning-card icon-name="standard:calibration" title="Filters">
+        <div class="slds-var-m-horizontal_small">
+            <lightning-input placeholder="search task by name" variant="label-hidden" label="Search To Do's"
+                type="search" onchange={handleSearchKeyChange}></lightning-input>
+            <lightning-combobox field-level-help="Sort the To-Do's by?" required label="Sort By"
+                message-when-value-missing="Please select a value to sort the To-Do's." value={sortByValue}
+                options={sortByOptions} class="slds-var-m-bottom_small"
+                onchange={handleSortByChange}></lightning-combobox>
+
+            <lightning-checkbox-group if:true={priorityOptionShow} name="Priority" class="slds-var-m-bottom_small"
+                label="Priority" options={priorityOptions} value={selectedPriority}
+                onchange={handlePriorityChange}></lightning-checkbox-group>
+            <hr>
+            <lightning-checkbox-group if:true={typeOptionShow} name="Type" label="Type" options={typeOptions}
+                value={selectedType} onchange={handleTypeChange}></lightning-checkbox-group>
+        </div>
+    </lightning-card>
+</template>
